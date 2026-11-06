@@ -1,0 +1,21 @@
+@startuml
+        title Security audit of a nested project element
+        participant Main
+        participant "project: Directory" as Root
+        participant "audit: SecurityAuditVisitor" as Audit
+        participant "src: Directory" as Src
+        participant "payment: SourceCodeFile" as Payment
+        Main -> Root: accept(audit)
+        Root -> Audit: visit(project)
+        note right of Audit: Directory overload inherited
+from RecursiveProjectVisitor
+        Audit -> Src: accept(this)
+        Src -> Audit: visit(src)
+        Audit -> Payment: accept(this)
+        Payment -> Audit: visit(payment: SourceCodeFile)
+        Audit -> Audit: add(CRITICAL, HARDCODED_CREDENTIALS, ...)
+        Audit -> Audit: add(HIGH, HIGH_RISK_SOURCE, ...)
+        note over Audit, Payment: Remaining children follow the same traversal
+        Main -> Audit: report()
+        Audit --> Main: immutable SecurityReport
+        @enduml

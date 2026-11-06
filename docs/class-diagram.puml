@@ -1,0 +1,44 @@
+@startuml
+title Assignment 6 Visitor roles
+skinparam classAttributeIconSize 0
+interface ProjectElement {
+  +accept(visitor: ProjectVisitor): void
+}
+interface ProjectVisitor {
+  +visit(file: SourceCodeFile): void
+  +visit(file: TestFile): void
+  +visit(file: ConfigurationFile): void
+  +visit(file: DependencyFile): void
+  +visit(directory: Directory): void
+}
+abstract class RecursiveProjectVisitor {
+  +visit(directory: Directory): void
+}
+class SourceCodeFile
+class TestFile
+class ConfigurationFile
+class DependencyFile
+class Directory {
+  -children: List<ProjectElement>
+}
+class SecurityAuditVisitor
+class ProjectStatisticsVisitor
+class QualityGateVisitor
+class ComplianceVisitor
+class TechnicalDebtVisitor
+ProjectElement <|.. SourceCodeFile
+ProjectElement <|.. TestFile
+ProjectElement <|.. ConfigurationFile
+ProjectElement <|.. DependencyFile
+ProjectElement <|.. Directory
+Directory "1" o-- "0..*" ProjectElement : children
+ProjectElement ..> ProjectVisitor : accept calls visit
+ProjectVisitor <|.. RecursiveProjectVisitor
+RecursiveProjectVisitor <|-- SecurityAuditVisitor
+RecursiveProjectVisitor <|-- ProjectStatisticsVisitor
+RecursiveProjectVisitor <|-- QualityGateVisitor
+RecursiveProjectVisitor <|-- ComplianceVisitor
+RecursiveProjectVisitor <|-- TechnicalDebtVisitor
+QualityGateVisitor *-- SecurityAuditVisitor : security
+QualityGateVisitor *-- ProjectStatisticsVisitor : statistics
+@enduml
