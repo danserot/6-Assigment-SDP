@@ -1,0 +1,23 @@
+Assignment 6 local verification
+Date: 2026-11-06 (Asia/Qyzylorda)
+Runtime: JDK 17, compilation target Java 17
+Build: Maven clean verify (offline mode using cached dependencies)
+Result: BUILD SUCCESS
+JUnit 5: 42 tests, 0 failures, 0 errors, 0 skipped
+Executable JAR: target/smart-code-inspection-1.0.0.jar
+Packaged copy: dist/smart-code-inspection-1.0.0.jar
+JAR demo: exit 0, both FAILED and PASSED release scenarios shown
+PowerShell run.ps1: exit 0, output matches the executable JAR
+Additional TechnicalDebtVisitor: separate eighth commit; no element changes
+Final history: 10 meaningful commits under Artem Khloptsev
+UML: class and sequence diagrams, SVG and editable PlantUML
+
+Coverage by test class:
+ElementTest: 6
+SecurityAuditVisitorTest: 5
+ProjectStatisticsVisitorTest: 5
+QualityGateVisitorTest: 7
+ComplianceVisitorTest: 7
+DemoIntegrationTest: 3
+TechnicalDebtVisitorTest: 5
+TraversalEdgeCaseTest: 4

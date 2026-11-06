@@ -228,7 +228,7 @@ For Russian walkthroughs and live modification steps, see [defense notes](docs/D
 
 ## Tests and requirements
 
-Run `mvn clean verify`. The suite contains meaningful JUnit 5 tests of:
+Run `mvn clean verify` or `.\verify.ps1` on Windows. The suite contains **42 meaningful JUnit 5 tests** of:
 
 | Requirement | Main evidence |
 | --- | --- |

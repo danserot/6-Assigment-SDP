@@ -63,5 +63,7 @@ class DemoIntegrationTest {
         assertTrue(output.contains("PROJECT STATISTICS"));
         assertTrue(output.contains("COMPLIANCE: PASS"));
         assertTrue(output.contains("VULNERABLE_DEPENDENCY"));
+        assertTrue(output.contains("TECHNICAL DEBT"));
+        assertTrue(output.contains("Estimated work: 285 minutes"));
     }
 }

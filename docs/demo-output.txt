@@ -1,0 +1,63 @@
+Smart Code Inspection and Compliance Engine
+Author: Artem Khloptsev | Assignment 6 | Visitor pattern
+Demo uses supplied file metadata; dependency flags are educational fixtures.
+
+=== fintech-project ===
+
+SECURITY AUDIT
+Score: 0/100 | Critical issues: 3
+[CRITICAL] HARDCODED_CREDENTIALS | PaymentService.java | Move credentials to a secret store.
+[HIGH] HIGH_RISK_SOURCE | PaymentService.java | Review sensitive operations before release.
+[CRITICAL] EXPOSED_CREDENTIALS | application.properties | Remove exposed configuration credentials.
+[HIGH] INSECURE_TRANSPORT | application.properties | Enable encrypted transport.
+[MEDIUM] DEBUG_ENABLED | application.properties | Disable debug mode for release.
+[CRITICAL] VULNERABLE_DEPENDENCY | pom.xml | Upgrade com.legacy:unsafe-crypto:0.8.
+
+PROJECT STATISTICS
+Files: 5 | Source files: 2 | Test files: 1
+Lines of code: 374 | Test methods: 6 | Dependencies: 3
+Average complexity: 10.00 | Test/source file ratio: 0.50
+
+QUALITY GATE (complexity <= 10.00, tests/source >= 0.40)
+Source project: PASS
+Security: FAIL
+Complexity: PASS
+Tests: PASS
+FINAL RESULT: FAILED
+
+COMPLIANCE: FAIL | Violations: 5
+[CRITICAL] EXPOSED_CREDENTIALS | PaymentService.java | Credentials must not be exposed in project files.
+[CRITICAL] EXPOSED_CREDENTIALS | application.properties | Credentials must not be exposed in project files.
+[HIGH] PROHIBITED_DEPENDENCY | pom.xml | Remove prohibited dependency com.legacy:unsafe-crypto.
+[HIGH] MISSING_VERSION | pom.xml | Specify a version for org.example:metrics.
+[HIGH] UNTESTED_PRODUCTION_MODULE | user | Add at least one test to production module user.
+
+TECHNICAL DEBT
+Estimated work: 285 minutes (heuristic)
+PaymentService.java | Reduce complexity above 10 | 60 min
+PaymentService.java | Remove hardcoded credentials | 60 min
+PaymentService.java | Review high-risk source | 45 min
+user | Add tests for a production module | 120 min
+
+=== fintech-project-fixed ===
+
+SECURITY AUDIT
+Score: 100/100 | Critical issues: 0
+No security issues detected.
+
+PROJECT STATISTICS
+Files: 6 | Source files: 2 | Test files: 2
+Lines of code: 424 | Test methods: 10 | Dependencies: 1
+Average complexity: 6.50 | Test/source file ratio: 1.00
+
+QUALITY GATE (complexity <= 10.00, tests/source >= 0.40)
+Source project: PASS
+Security: PASS
+Complexity: PASS
+Tests: PASS
+FINAL RESULT: PASSED
+
+COMPLIANCE: PASS | Violations: 0
+
+TECHNICAL DEBT
+Estimated work: 0 minutes (heuristic)
