@@ -1,17 +1,17 @@
 package edu.assignment.inspection.model;
 
-            import edu.assignment.inspection.visitor.ProjectVisitor;
-            import java.util.Objects;
-            import java.util.List;
+import edu.assignment.inspection.visitor.ProjectVisitor;
+import java.util.List;
+import java.util.Objects;
 
-            public record Directory(String name, List<ProjectElement> children) implements ProjectElement {
-                public Directory {
-                    name = Validation.text(name, "name");
-children = List.copyOf(children);
-                }
+public record Directory(String name, List<ProjectElement> children) implements ProjectElement {
+    public Directory {
+        name = Validation.text(name, "name");
+        children = List.copyOf(children);
+    }
 
-                @Override
-                public void accept(ProjectVisitor visitor) {
-                    Objects.requireNonNull(visitor, "visitor").visit(this);
-                }
-            }
+    @Override
+    public void accept(ProjectVisitor visitor) {
+        Objects.requireNonNull(visitor, "visitor").visit(this);
+    }
+}
