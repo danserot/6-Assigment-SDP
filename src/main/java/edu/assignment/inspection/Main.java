@@ -23,15 +23,18 @@ public final class Main {
         var statistics = new ProjectStatisticsVisitor();
         var quality = new QualityGateVisitor();
         var compliance = new ComplianceVisitor();
+        var debt = new TechnicalDebtVisitor();
 
         project.accept(security);
         project.accept(statistics);
         project.accept(quality);
         project.accept(compliance);
+        project.accept(debt);
 
         reporter.security(security.report());
         reporter.statistics(statistics.report());
         reporter.quality(quality.report());
         reporter.compliance(compliance.report());
+        reporter.technicalDebt(debt.report());
     }
 }

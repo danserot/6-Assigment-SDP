@@ -41,6 +41,12 @@ public final class ConsoleReporter {
         report.violations().forEach(this::issue);
     }
 
+    public void technicalDebt(TechnicalDebtReport report) {
+        out.printf("%nTECHNICAL DEBT%nEstimated work: %d minutes (heuristic)%n", report.totalMinutes());
+        report.items().forEach(item -> out.printf("%s | %s | %d min%n",
+                item.element(), item.reason(), item.estimatedMinutes()));
+    }
+
     private void issue(InspectionIssue issue) {
         out.printf("[%s] %s | %s | %s%n", issue.severity(), issue.rule(), issue.element(), issue.message());
     }
